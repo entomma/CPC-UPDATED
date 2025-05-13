@@ -144,12 +144,15 @@ public class login extends javax.swing.JFrame {
             if (rs.next()) {
                 String studentId1 = rs.getString("student_id");
                 JOptionPane.showMessageDialog(null, "Login successful!");
+                Autofile.sendStudentData(studentId1);
                 this.dispose(); // Close login window
                 ArrayList<String> studentIds = new ArrayList<>();
                     studentIds.add(studentId1);
+                    
                     String loginTime = java.time.LocalDateTime.now().format(
                         java.time.format.DateTimeFormatter.ofPattern("MMMM dd, yyyy - hh:mm a")
                     );
+                    
                     mainwindow main = new mainwindow(studentIds, loginTime);
                     main.setVisible(true); // open next form
                     main.setLocationRelativeTo(null);
